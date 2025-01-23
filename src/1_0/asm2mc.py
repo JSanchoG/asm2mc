@@ -35,7 +35,7 @@ def execute_commands(base_name):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: py to.py <base_name>")
+        print("Usage: py asm2mc.py <base_name>")
         sys.exit(1)
 
     base_name = sys.argv[1].removesuffix(".asm")
