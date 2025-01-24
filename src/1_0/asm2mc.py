@@ -4,8 +4,8 @@ import subprocess
 
 def execute_commands(base_name):
     asm_path = f"{base_name}.asm"
-    mca_path = f"{base_name}.mca"
-    mc_path = f"{base_name}.mc"
+    mca_path = f"{sys.argv[2]}.mca" if len(sys.argv) == 3 else f"{base_name}.mca"
+    mc_path = f"{sys.argv[2]}.mc" if len(sys.argv) == 3 else f"{base_name}.mc"
 
     if not os.path.isfile(asm_path):
         print(f"Error: The file '{asm_path}' does not exist.")
@@ -34,8 +34,8 @@ def execute_commands(base_name):
     process_output(result2.stdout, mc_path)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: py asm2mc.py <base_name>")
+    if len(sys.argv) not in {2, 3}:
+        print("Usage: py asm2mc.py <base_name> [output_file]")
         sys.exit(1)
 
     base_name = sys.argv[1].removesuffix(".asm")
